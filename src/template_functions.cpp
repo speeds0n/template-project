@@ -149,22 +149,27 @@ namespace graal{
     Itr unique(Itr first, Itr last, Equal eq){
     	auto result = first;
 	auto temp{first};
+	auto current{first};
 	bool find{false};
 	while(first < last){
 	    if(!eq(*result, *first)){
-	    	while(temp <= result){
-	            if(eq(*temp,*result)){
-		    	find = true;
-		    }
-	    	    //*(++result) = *first;
-		}
-		if(!find){
-	    	    *(++result) = *first;
-		    find = false;
-		}
+	 	*(++result) = *first;
+
+		print_vector(temp, result);
 	    }
 	    first++;
 	}
 	return ++result;
+    }
+    template <typename Itr, typename Predicate>
+    Itr partition(Itr first, Itr last, Predicate p){
+    	auto result{first};
+	auto temp{first};
+    	while(first < last){
+	    if(p(*first)){
+	    	*(++result)=*first;
+	    }
+	    first++;
+	}
     }
 }/*end namespace graal*/
