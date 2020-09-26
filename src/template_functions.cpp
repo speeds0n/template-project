@@ -147,29 +147,32 @@ namespace graal{
     /*QUESTÃO 8*/
     template <typename Itr, typename Equal>
     Itr unique(Itr first, Itr last, Equal eq){
-    	auto result = first;
-	auto temp{first};
-	auto current{first};
-	bool find{false};
-	while(first < last){
-	    if(!eq(*result, *first)){
-	 	*(++result) = *first;
-
-		print_vector(temp, result);
+    	auto result{first};
+    	auto temp{first};
+	    while(first < last){
+	        if(!eq(*result, *first)){
+                *(++result) = *first;
+                for(int i{0}; i < *result; i++){
+                    if(v[i] == first){
+                        std::cout << "já tem" << std::endl;
+                    }
+                }
+		    print_vector(temp, result);
+	        }
+	        first++;
 	    }
-	    first++;
-	}
-	return ++result;
+	    return ++result;
     }
     template <typename Itr, typename Predicate>
     Itr partition(Itr first, Itr last, Predicate p){
     	auto result{first};
-	auto temp{first};
+	    auto temp{first};
     	while(first < last){
-	    if(p(*first)){
-	    	*(++result)=*first;
-	    }
+	        if(p(*first)){
+	    	    *(++result)=*first;
+	        }
 	    first++;
-	}
+	    }
+        return last;
     }
 }/*end namespace graal*/

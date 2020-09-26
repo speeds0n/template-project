@@ -10,7 +10,7 @@ bool cmp_int(const int& a, const int& b){
 bool p_int(const int& a){
     return a < 0;
 }
-bool p_int_2(const int& a){
+bool p2_int(const int& a){
     return a > 5;
 }
 bool eq_int(const int& a, const int& b){
@@ -96,9 +96,9 @@ int main(){
     graal::print_vector(std::begin(V_7), last7);
 
     int V_9[]{1,2,3,4,5,6,7,8,9,10};
-    graal::print_vector(std::begin(V_9), std::end(V_9));
-    auto last9 = graal::partition(std::begin(V_9), std::end(V_9), p_int_2);
-    graal::print_vector(std::begin(V_9), last9);
+    //graal::print_vector(std::begin(V_9), std::end(V_9));
+    auto last9 = graal::partition(std::begin(V_9), std::end(V_9), p2_int);
+    //graal::print_vector(std::begin(V_9), last9);
 
 	return 0;
 }
